@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP WebRTC</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="index.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Video Call</h1>
+            <div class="login-section" id="loginSection">
+                <input type="text" id="usernameInput" placeholder="Enter unique username" maxlength="20">
+                <button class="btn btn-primary" onclick="login()">Connect</button>
+            </div>
+        </div>
+
+        <div class="main-content" id="mainContent">
+            <div class="user-info">
+                <div class="user-status">
+                    <div class="status-dot"></div>
+                    <span>Connected as: <strong id="currentUser"></strong></span>
+                </div>
+                <button class="btn btn-danger" onclick="logout()">Disconnect</button>
+            </div>
+
+            <div class="content-grid">
+                <div class="online-users">
+                    <h2>Online Users (<span id="userCount">0</span>)</h2>
+                    <div class="user-list" id="userList">
+                    </div>
+                </div>
+
+                <div class="video-container">
+                    <div class="waiting-message" id="waitingMessage">
+                        <h3>Ready to make calls</h3>
+                        <p>Click on any online user to start a video call</p>
+                    </div>
+
+                    <div class="call-interface" id="callInterface">
+                        <div class="call-header">
+                            <h3 id="callPartner">Call with User</h3>
+                            <div class="call-status" id="callStatus">Connecting...</div>
+                        </div>
+                        
+                        <div class="videos-container">
+                            <div class="video-wrapper">
+                                <video id="remoteVideo" autoplay playsinline></video>
+                                <div class="video-label" id="remoteLabel">Remote User</div>
+                            </div>
+                            <div class="video-wrapper">
+                                <video id="localVideo" autoplay playsinline muted></video>
+                                <div class="video-label">You</div>
+                            </div>
+                        </div>
+
+                        <div class="call-controls">
+                            <button class="control-btn mute" id="muteBtn" onclick="toggleMute()" title="Toggle Microphone">
+                                🎤
+                            </button>
+                            <button class="control-btn video active" id="videoBtn" onclick="toggleVideo()" title="Toggle Camera">
+                                📹
+                            </button>
+                            <button class="control-btn screen" id="screenBtn" onclick="toggleScreenShare()" title="Share Screen">
+                                🖥️
+                            </button>
+                            <button class="control-btn end" onclick="endCall()" title="End Call">
+                                📞
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notifications" id="notifications"></div>
+
+ 
+</body>
+</html>
